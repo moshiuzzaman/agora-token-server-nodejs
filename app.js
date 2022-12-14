@@ -7,14 +7,12 @@ const {
     RtcTokenBuilder,
     RtcRole,
 } = require("agora-access-token");
-if (process.env.NODE_ENV === "development") {
+
     require("dotenv").config();
-}
 
 const generateToken = (account, channelName = "testChannel") => {
-    const appID = process.env.appID;
-    const appCertificate = process.env.appCertificate;
-
+    const appID = process.env.APP_ID;
+    const appCertificate = process.env.APP_CERTIFICATE;
     const expirationTimeInSeconds = 3600;
     const currentTimestamp = Math.floor(Date.now() / 1000);
 
@@ -66,6 +64,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/token", (req, res) => {
+
     const account = req.query.username;
     const channelName = req.query.channelName;
     const { rtmToken, rtcToken } = generateToken(account, channelName);
@@ -84,3 +83,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`App is running on port ${PORT}`);
 });
+
+
