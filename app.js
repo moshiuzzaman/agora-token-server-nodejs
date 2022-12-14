@@ -78,7 +78,7 @@ app.get("/rtc-uid-token", (req, res) => {
     res.status(200).json({ token: rtcUidToken });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3005;
 
 app.listen(PORT, () => {
     console.log(`App is running on port ${PORT}`);
